@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dejiacheng.system.mapper.SysServiceInfoMapper">
+    
+    <resultMap type="SysServiceInfo" id="SysServiceInfoResult">
+        <result property="serviceId"    column="service_id"    />
+        <result property="serviceIp"    column="service_ip"    />
+        <result property="servicePort"    column="service_port"    />
+        <result property="serviceName"    column="service_name"    />
+        <result property="servicePassword"    column="service_password"    />
+    </resultMap>
+
+    <sql id="selectSysServiceInfoVo">
+        select service_id, service_ip, service_port, service_name, service_password from sys_service_info
+    </sql>
+
+    <select id="selectSysServiceInfoList" parameterType="SysServiceInfo" resultMap="SysServiceInfoResult">
+        <include refid="selectSysServiceInfoVo"/>
+        <where>  
+            <if test="serviceIp != null  and serviceIp != ''"> and service_ip like concat('%', #{serviceIp}, '%')</if>
+            <if test="servicePort != null "> and service_port like concat('%', #{servicePort}, '%')</if>
+            <if test="serviceName != null  and serviceName != ''"> and service_name like concat('%', #{serviceName}, '%')</if>
+            <if test="servicePassword != null  and servicePassword != ''"> and service_password = #{servicePassword}</if>
+        </where>
+    </select>
+    
+    <select id="selectSysServiceInfoById" parameterType="Integer" resultMap="SysServiceInfoResult">
+        <include refid="selectSysServiceInfoVo"/>
+        where service_id = #{serviceId}
+    </select>
+        
+    <insert id="insertSysServiceInfo" parameterType="SysServiceInfo" useGeneratedKeys="true" keyProperty="serviceId">
+        insert into sys_service_info
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="serviceIp != null  and serviceIp != ''">service_ip,</if>
+            <if test="servicePort != null ">service_port,</if>
+            <if test="serviceName != null  and serviceName != ''">service_name,</if>
+            <if test="servicePassword != null  and servicePassword != ''">service_password,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="serviceIp != null  and serviceIp != ''">#{serviceIp},</if>
+            <if test="servicePort != null ">#{servicePort},</if>
+            <if test="serviceName != null  and serviceName != ''">#{serviceName},</if>
+            <if test="servicePassword != null  and servicePassword != ''">#{servicePassword},</if>
+         </trim>
+    </insert>
+
+    <update id="updateSysServiceInfo" parameterType="SysServiceInfo">
+        update sys_service_info
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="serviceIp != null  and serviceIp != ''">service_ip = #{serviceIp},</if>
+            <if test="servicePort != null ">service_port = #{servicePort},</if>
+            <if test="serviceName != null  and serviceName != ''">service_name = #{serviceName},</if>
+            <if test="servicePassword != null  and servicePassword != ''">service_password = #{servicePassword},</if>
+        </trim>
+        where service_id = #{serviceId}
+    </update>
+
+    <delete id="deleteSysServiceInfoById" parameterType="Integer">
+        delete from sys_service_info where service_id = #{serviceId}
+    </delete>
+
+    <delete id="deleteSysServiceInfoByIds" parameterType="String">
+        delete from sys_service_info where service_id in 
+        <foreach item="serviceId" collection="array" open="(" separator="," close=")">
+            #{serviceId}
+        </foreach>
+    </delete>
+    
+</mapper>

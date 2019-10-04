@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html  lang="zh" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<div>
+		<span>报警监听:</span>
+		<span id="baojing" ></span>
+	</div>
+	<div>
+		<span id="zhengque"></span>
+	</div>
+	<div>
+		<span id="cuowu"></span>
+	</div>
+</body>
+	<script>
+		var socket;
+		var i = 1;
+		var a = 0;
+		var b = 0;
+		if (typeof(WebSocket)=="undefined") {
+			console.log("你的浏览器不支持websocket");
+		}else{
+			console.log("你的浏览器支持websocket");
+			//实现化WebSocket对象，指定要连接的服务器地址与端口  建立连接  
+            //等同于socket = new WebSocket("ws://localhost:8083/checkcentersys/websocket/20");  
+            socket = new WebSocket("ws://localhost:8080/websocket/20");
+			//打开事件
+			socket.onopen = function(){
+				console.log("连接已经打开");
+			};
+			//获取消息事件
+			document.getElementById("").className = "blue";
+			socket.onmessage = function(msg){
+				if (msg.data=="true") {
+					document.getElementById("baojing").innerText = "测试正常---->总测试次数为："+i;
+					document.getElementById("zhengque").innerText = "正常次数为："+(++a);
+				} else {
+					document.getElementById("baojing").innerText = "测试错误"+"---->总测试次数为："+i;
+					document.getElementById("cuowu").innerText = "错误次数为："+(++b);
+				}
+				
+				console.log(msg.data+"测试次数:"+i);
+				i++;
+				//发现消息时进入 开始处理前端逻辑
+			};
+			//关闭事件
+			socket.onclose = function(){
+				console.log("Socket已关闭");
+			};
+			//发生错误事件s
+			socket.onerror = function(){
+				alert("Socket发生了错误");
+			};
+		}
+
+	</script>
+</html>

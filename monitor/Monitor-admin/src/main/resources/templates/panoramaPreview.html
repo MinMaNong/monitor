@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>智慧园区</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	    <meta http-equiv="Pragma" content="no-cache" />
+	    <meta http-equiv="Cache-Control" content="no-cache, must-revalidate" />
+	    <meta http-equiv="Expires" content="0" />
+	    <!-- <link rel="stylesheet" href="css/project.css" /> -->
+	     <link th:href="@{/css/animate.css}" rel="stylesheet"/>
+         <link th:href="@{/css/style.css}" rel="stylesheet"/>
+         <link th:href="@{/css/skins.css}" rel="stylesheet"/>
+	     <link th:href="@{/css/jquery.contextMenu.min.css}" rel="stylesheet"/>
+		 <link href="../static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" rel="stylesheet"/>
+	     <link href="../static/ruoyi/css/project.css" th:href="@{ruoyi/css/project.css}" rel="stylesheet"/>
+	</head>
+	<!--禁止选中 onselectstart="return false"-->
+	<body onselectstart="return false">
+		<div class="container">
+			<!--头部-->
+			<div class="head">
+				<div class="log"><img src="img/logo.png"/></div>
+				<!--系统-->
+				<ul class="system">
+					<li class="time"></li>
+					<li class="system_user">
+						<span><a class="user_name">admin</a></span>
+						<ul>
+							<li><a>个人信息</a></li>
+							<li><a href="#0">修改密码</a></li>
+							<li><a href="#0">注销</a></li>
+						</ul>
+					</li>
+					<li class="system_admin"><a href="#0">系统管理</a></li>
+				</ul>
+				<!--select选择-->
+				<div class="uSelect">
+					<select id="uSelect">
+						<option value="全部摄像头" selected="selected">全部摄像头</option>
+						<option value="东边摄像头">东边摄像头</option>
+						<option value="南边摄像头">南边摄像头</option>
+						<option value="西边摄像头">西边摄像头</option>
+						<option value="北边摄像头">北边摄像头</option>
+						<option value="保安室岗亭摄像头">保安室岗亭</option>
+						<option value="消防室摄像头">消防室</option>
+						<option value="监控室摄像头">监控室</option>
+					</select>
+				</div>
+				<!--球机筛选-->
+				<div class="mold">
+					<div class="mold_left1 mold_c">
+						<img src="img/s-whole2.png" />
+						<span>球机</span>
+					</div>
+					<div class="mold_left2 mold_c">
+						<img src="img/s-half2.png" />
+						<span>半球机</span>
+					</div>
+					<div class="mold_left3 mold_c">
+						<img src="img/s-qj2.png" />
+						<span>全景</span>
+					</div>
+					<div class="mold_left4 mold_c active">
+						<img src="img/s-all.png" />
+						<span>全部</span>
+					</div>
+				</div>
+				<div style="clear: both;"></div>
+			</div>
+			<!--头部-结束-->
+			<!--左边切换卡-->
+			<div class="left" id="leftList">
+				<div class="qj active">
+					<a th:href="@{/panoramaPreview}">
+						<img src="img/l-qj.png" />
+					</a>
+				</div>
+				<div class="sos">
+					<a th:href="@{/alert_admin}">
+						<img src="img/l-sos2.png" />
+					</a>
+				</div>
+				<div class="tatistics">
+					<a th:href="@{/tongji}">
+						<img src="img/l-tatistics2.png" />
+					</a>
+				</div>
+			</div>
+			<!--左边切换卡-结束-->
+			<!--包裹摄像头位置-->
+			<div class="camera" id="camera">
+				<!------------摄像头图片------------>
+				<!--
+					whole：球机摄像头。half：半球机摄像头。myall：全景摄像头
+					east：东边摄像头。south：南边摄像头。west：西边摄摄像头。north：北边摄像头。securityPost：保安亭摄像头。fireRoom:：消防室摄像头。monitor：监控室摄像头
+				-->
+				<!--class名顺序：共同名称；用于单独控制图片；球机类型；东南西北、保安室消防室、监控室等摄像头-->
+				<img class="camera_img img01 whole west" id="23" name="西1#" src="img/whole.png" />
+				<!--西边摄像头-->
+				<img class="camera_img img02 whole west" id="24" name="西2#" src="img/whole.png" />
+				<img class="camera_img img03 whole west" id="27" name="西3#" src="img/whole.png" />
+				<img class="camera_img img04 whole west" id="28" name="西4#" src="img/whole.png" />
+				<img class="camera_img img05 whole west" id="29" name="西5#" src="img/whole.png" />
+				<img class="camera_img img06 whole west" id="30" name="西6#" src="img/whole.png" />
+				<img class="camera_img img07 whole west" id="31" name="西7#" src="img/whole.png" />
+				<!--西边摄像头-结束-->
+				<!--北边摄像头-->
+				<img class="camera_img img08 whole north" id="32" name="北1#" src="img/whole.png" />
+				<img class="camera_img img09 whole north" id="33" name="北2#" src="img/whole.png" />
+				<img class="camera_img img10 whole north" id="34" name="北3#" src="img/whole.png" />
+				<img class="camera_img img11 half securityPost" id="36" name="北门保安室（右）" src="img/half.png" />
+				<img class="camera_img img12 half securityPost" id="37" name="北门保安室（左）" src="img/half.png" />
+				<img class="camera_img img13 whole north" id="1" name="北5#" src="img/whole.png" />
+				<img class="camera_img img14 whole north" id="2" name="北6#" src="img/whole.png" />
+				<img class="camera_img img15 whole north" id="4" name="北7#" src="img/whole.png" />
+				<!--北边摄像头-结束-->
+				<!--南边摄像头-->
+				<img class="camera_img img16 whole east" id="5" name="东1#" src="img/whole.png" />
+				<img class="camera_img img17 whole east" id="6" name="东2#" src="img/whole.png" />
+				<img class="camera_img img18 whole east" id="7" name="东3#" src="img/whole.png" />
+				<img class="camera_img img19 whole east" id="8" name="东4#" src="img/whole.png" />
+				<img class="camera_img img20 whole east" id="9" name="东5#" src="img/whole.png" />
+				<img class="camera_img img21 whole east" id="10" name="东6#" src="img/whole.png" />
+				<img class="camera_img img22 whole east" id="11" name="东7#" src="img/whole.png" />
+				<img class="camera_img img23 whole east" id="12" name="东8#" src="img/whole.png" />
+				<img class="camera_img img24 whole east" id="14" name="东9#" src="img/whole.png" />
+				<img class="camera_img img25 whole east" id="15" name="东10#" src="img/whole.png" />
+				<img class="camera_img img26 whole east" id="16" name="东11#" src="img/whole.png" />
+				<img class="camera_img img27 whole south" id="17" name="南1#" src="img/whole.png" />
+				<img class="camera_img img28 whole south" id="18" name="南2#" src="img/whole.png" />
+				<img class="camera_img img29 whole south" id="19" name="南3#" src="img/whole.png" />
+				<img class="camera_img img30 whole south" id="20" name="南门#" src="img/whole.png" />
+				<img class="camera_img img31 whole south" id="21" name="南4#" src="img/whole.png" />
+				<img class="camera_img img32 whole south" id="22" name="南5#" src="img/whole.png" />
+				<!--南边摄像头-结束-->
+				<!--方框内的摄像头-->
+				<img class="camera_img img33 half fireRoom" id="25" name="消防控制室" src="img/half.png" />
+				<img class="camera_img img34 half securityPost" id="26" name="园区中间保安亭" src="img/half.png" />
+				<img class="camera_img img35 north" id="35" name="北4#" src="img/whole.png" />
+				<img class="camera_img img36 half securityPost" id="13" name="东门保安室" src="img/half.png" />
+				<img class="camera_img img37 myall" id="38" name="东门全景180度" src="img/all.png" />
+				<img class="camera_img img37 myall" id="39" name="全景球机" src="img/all.png" / style="display: none;">
+				<img class="camera_img img38 half monitor" id="3" name="监控室" src="img/half.png" />
+				<!------------摄像头图片-结束------------>
+				<!------------感应器图片------------>
+				<!--顺序为逆时针排序。原图有64个感应区间，现图在58处把两个感应区间合成一个区间-->
+				<!--class名顺序：共同名称（传感器）；单独控制图片class-->
+				<img class="sensorRedGreen imgRG1" style="display: none;"/>
+				<img class="sensorRedGreen imgRG1" src="img/imgGreen/G1.png" />
+				<img class="sensorRedGreen imgRG2" src="img/imgGreen/G2.png" />
+				<img class="sensorRedGreen imgRG3" src="img/imgGreen/G3.png" />
+				<img class="sensorRedGreen imgRG4" src="img/imgGreen/G4.png" />
+				<img class="sensorRedGreen imgRG5" src="img/imgGreen/G5.png" />
+				<img class="sensorRedGreen imgRG6" src="img/imgGreen/G6.png" />
+				<img class="sensorRedGreen imgRG7" src="img/imgGreen/G7.png" />
+				<img class="sensorRedGreen imgRG8" src="img/imgGreen/G8.png" />
+				<img class="sensorRedGreen imgRG9" src="img/imgGreen/G9.png" />
+				<img class="sensorRedGreen imgRG10" src="img/imgGreen/G10.png" />
+				<img class="sensorRedGreen imgRG11" src="img/imgGreen/G11.png" />
+				<img class="sensorRedGreen imgRG12" src="img/imgGreen/G12.png" />
+				<img class="sensorRedGreen imgRG13" src="img/imgGreen/G13.png" />
+				<img class="sensorRedGreen imgRG14" src="img/imgGreen/G14.png" />
+				<img class="sensorRedGreen imgRG15" src="img/imgGreen/G15.png" />
+				<img class="sensorRedGreen imgRG16" src="img/imgGreen/G16.png" />
+				<img class="sensorRedGreen imgRG17" src="img/imgGreen/G17.png" />
+				<img class="sensorRedGreen imgRG18" src="img/imgGreen/G18.png" />
+				<img class="sensorRedGreen imgRG19" src="img/imgGreen/G19.png" />
+				<img class="sensorRedGreen imgRG20" src="img/imgGreen/G20.png" />
+				<img class="sensorRedGreen imgRG21" src="img/imgGreen/G21.png" />
+				<img class="sensorRedGreen imgRG22" src="img/imgGreen/G22.png" />
+				<img class="sensorRedGreen imgRG23" src="img/imgGreen/G23.png" />
+				<img class="sensorRedGreen imgRG24" src="img/imgGreen/G24.png" />
+				<img class="sensorRedGreen imgRG25" src="img/imgGreen/G25.png" />
+				<img class="sensorRedGreen imgRG26" src="img/imgGreen/G26.png" />
+				<img class="sensorRedGreen imgRG27" src="img/imgGreen/G27.png" />
+				<img class="sensorRedGreen imgRG28" src="img/imgGreen/G28.png" />
+				<img class="sensorRedGreen imgRG29" src="img/imgGreen/G29.png" />
+				<img class="sensorRedGreen imgRG30" src="img/imgGreen/G30.png" />
+				<img class="sensorRedGreen imgRG31" src="img/imgGreen/G31.png" />
+				<img class="sensorRedGreen imgRG32" src="img/imgGreen/G32.png" />
+				<img class="sensorRedGreen imgRG33" src="img/imgGreen/G33.png" />
+				<img class="sensorRedGreen imgRG34" src="img/imgGreen/G34.png" />
+				<img class="sensorRedGreen imgRG35" src="img/imgGreen/G35.png" />
+				<img class="sensorRedGreen imgRG36" src="img/imgGreen/G36.png" />
+				<img class="sensorRedGreen imgRG37" src="img/imgGreen/G37.png" />
+				<img class="sensorRedGreen imgRG38" src="img/imgGreen/G38.png" />
+				<img class="sensorRedGreen imgRG39" src="img/imgGreen/G39.png" />
+				<img class="sensorRedGreen imgRG40" src="img/imgGreen/G40.png" />
+				<img class="sensorRedGreen imgRG41" src="img/imgGreen/G41.png" />
+				<img class="sensorRedGreen imgRG42" src="img/imgGreen/G42.png" />
+				<img class="sensorRedGreen imgRG43" src="img/imgGreen/G43.png" />
+				<img class="sensorRedGreen imgRG44" src="img/imgGreen/G44.png" />
+				<img class="sensorRedGreen imgRG45" src="img/imgGreen/G45.png" />
+				<img class="sensorRedGreen imgRG46" src="img/imgGreen/G46.png" />
+				<img class="sensorRedGreen imgRG47" src="img/imgGreen/G47.png" />
+				<img class="sensorRedGreen imgRG48" src="img/imgGreen/G48.png" />
+				<img class="sensorRedGreen imgRG49" src="img/imgGreen/G49.png" />
+				<img class="sensorRedGreen imgRG50" src="img/imgGreen/G50.png" />
+				<img class="sensorRedGreen imgRG51" src="img/imgGreen/G51.png" />
+				<img class="sensorRedGreen imgRG52" src="img/imgGreen/G52.png" />
+				<img class="sensorRedGreen imgRG53" src="img/imgGreen/G53.png" />
+				<img class="sensorRedGreen imgRG54" src="img/imgGreen/G54.png" />
+				<img class="sensorRedGreen imgRG55" src="img/imgGreen/G55.png" />
+				<img class="sensorRedGreen imgRG56" src="img/imgGreen/G56.png" />
+				<img class="sensorRedGreen imgRG57" src="img/imgGreen/G57.png" />
+				<!--原先设计图中有两传感器，现给的图和成一个传感器-->
+				<img class="sensorRedGreen imgRG58" src="img/imgGreen/G58.png" />
+				<img class="sensorRedGreen imgRG59" src="img/imgGreen/G59.png" />
+				<img class="sensorRedGreen imgRG60" src="img/imgGreen/G60.png" />
+				<img class="sensorRedGreen imgRG61" src="img/imgGreen/G61.png" />
+				<img class="sensorRedGreen imgRG62" src="img/imgGreen/G62.png" />
+				<img class="sensorRedGreen imgRG63" src="img/imgGreen/G63.png" />
+				<img class="sensorRedGreen imgRG64" src="img/imgGreen/G64.png" />
+				<!--<img src="img/imgRed/R1.png" />-->
+				<!------------感应器图片-结束------------>
+			</div>
+			<!--包裹摄像头位置-结束-->
+			<!--人员入侵和视频制作弹出层-->
+			<div class="eject" style="filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000,endColorstr=#99000000);">
+				<div class="ejectContent">
+					<!--列表-->
+					<ul class="list">
+						<li>报警1</li>
+						<li class="active">报警2</li>
+						<li>报警3</li>
+					</ul>
+					<!--人员入侵类型和实时视频制作-->
+					<div class="content">
+						<div class="people">
+							<p class="title">人员入侵报警类型</p>
+							<p class="people_p times">报警时间：<span>2019年8月20日  12:10:15</span></p>
+							<p class="people_p marking">设备型号：<span>北大门球机3</span></p>
+							<div class="buttonList">
+								<div class="error_but">误报</div>
+								<div class="error_return">回放＞</div>
+							</div>
+							<a href="#" class="videoqh"style="position: relative;top: 36px;left: 333px;display: none;"><img src="img/qh.png"/></a>
+							<div class="video"></div>
+							<div class="myselect" id="myselect_dropdown">
+								<p>请选择办理人员</p>
+								<ul>
+									<li><a rel="1">安全人员1</a></li>
+									<li><a rel="2">安全人员2</a></li>
+									<li><a rel="3">安全人员3</a></li>
+									<li><a rel="4">安全人员4</a></li>
+									<li><a rel="5">安全人员5</a></li>
+								</ul>
+							</div>
+							
+							<div class="lower">下发</div>
+							<div class="banner">
+								<div class="bannerLeft">
+									<img src="img/bannerLeft.png" />
+								</div>
+								<div class="bContent">
+									<ul>
+										<!--中间放置图片-->
+										<li><div><!--<img src="img/logon/logon.png" />--></div></li>
+										<li><div>2</div></li>
+										<li><div>3</div></li>
+										<li><div>4</div></li>
+										<li><div>5</div></li>
+										<li><div>6</div></li>
+										<li><div>7</div></li>
+										<li><div>8</div></li>
+									</ul>
+									<!--<div class="ejectImgPlus">
+										<input value="" />
+									</div>-->
+								</div>
+								<div class="bannerRight">
+									<img src="img/bannerRight.png" />
+								</div>
+							</div>
+							<div class="tip">警报处理信息文本反馈记录<br />[人员、时间状态（已处理和未处理）]</div>
+							<span class="ejectClose">×</span>
+						</div>
+						<div class="make">
+							<p class="title">实时视频制作</p>
+							<a href="#"class="videoqh"style="position: relative;top: 56px;left: 354px;display: none;"><img src="img/qh.png"/></a>
+							<div class="content">
+								<!--<div class="video2"></div>-->
+								<video id="videoCell" class="video2" src="" style="width: 100%;height: 208px;" controlsList="nodownload" autoplay=""></video>
+								<!--操作按钮-->
+								<ul class="control">
+									<li class="control_suspend"></li>
+									<li class="control_left" onclick="getleft()"></li>
+									<li class="control_right" onclick="getright()"></li>
+									<li class="control_top" onclick="getup()"></li>
+									<li class="control_bottom" onclick="getwn()"></li>
+									<li class="control_screenshots2"></li>
+									<li class="control_screenshots"></li>
+									<li class="control_rotate"></li>
+									<li class="control_enlarge"></li>
+								</ul>
+								<!--操作按钮-结束-->
+								<div class="startTime">
+									<span class="startTime_font">回放开始时间:</span>
+									<span class="startTime_time">2019年8月20日  12:10:15</span>
+								</div>
+								<div class="endTime">
+									<span class="endTime_font">回放开始时间:</span>
+									<span class="endTime_time">2019年8月20日  12:10:15</span>
+								</div>
+								<div class="but_startStop">
+									<div class="but_start"></div>
+									<div class="but_stop"></div>
+								</div>
+							</div>
+							<span class="ejectClose">×</span>
+						</div>
+					</div>
+					<!--放大后的轮播图片-->
+				</div>
+				<div class="ejectImgPlus">
+					<div class="ejectImgPlusM">
+						<!--放大后的图片-->
+						<img src="" />
+						<!--关闭按钮-->
+						<span class="ejectImgPlusClose">×</span>
+					</div>
+				</div>
+			</div>
+			<!--人员入侵和视频制作弹出层-结束-->
+		</div>
+		<script th:inline="javascript"> var ctx = [[@{/}]];  </script>
+		<!-- 全局js -->
+		<script src="../static/js/jquery.min.js" th:src="@{/js/jquery.min.js}"></script>
+		<script src="../static/js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>
+		<!-- 插件 -->
+		<script src="../static/js/jquery-1.7.1.min.js" th:src="@{/js/jquery-1.7.1.min.js}"></script>
+		<script src="../static/ruoyi/js/panoramaPreview.js" th:src="@{/ruoyi/js/panoramaPreview.js}"></script>
+		<script src="../static/ruoyi/js/hls.min.js" th:src="@{/ruoyi/js/hls.min.js}"></script>
+		<script src="../static/ruoyi/js/video.js" th:src="@{/ruoyi/js/video.js}"></script>
+		<script src="../static/ajax/libs/blockUI/jquery.blockUI.js" th:src="@{/ajax/libs/blockUI/jquery.blockUI.js}"></script>
+		<script src="../static/ajax/libs/layer/layer.min.js" th:src="@{/ajax/libs/layer/layer.min.js}"></script>
+        <script src="../static/ruoyi/js/ry-ui.js" th:src="@{/ruoyi/js/ry-ui.js?v=4.0.0}"></script>
+		<!--<script type="text/javascript" src="js/jquery-1.7.1.min.js" ></script>
+		<script type="text/javascript" src="js/panoramaPreview.js" ></script>
+		<script src="js/hls.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/video.js" type="text/javascript" charset="utf-8"></script>  -->
+		<script>
+			/********************************************获取高度和宽度***************************************************/
+			//js  兼容各浏览器，获取高度和宽度
+			var userHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;   //当前浏览器height
+			var userWidth = parseInt(window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth); //当前浏览器width
+			//var userWidth = parseInt(window.screen.width);//显示器分辨率
+			var mWidth = userWidth - 21;
+			if (userWidth < 1024 || userWidth < "1024") {
+				$(".container").css({"min-width" : "1004px","min-height": "564px"});
+			} else{
+				//设置最小宽度和最小高度
+				$(".container").css({"min-width" : mWidth + "px","min-height": mWidth*9/16 +"px"});
+			}
+			console.log(userHeight +":" + userWidth)
+			/*当分辨率小于1366时，设置 时间、管理系统的宽度*/
+			if(userWidth <= 1366 || userWidth <= "1366"){
+				$(".system").css({"width":"20%"});
+			}
+			/********************************************获取高度和宽度-结束***************************************************/
+		</script>
+	</body>
+</html>

@@ -1,0 +1,16 @@
+eclipse.preferences.version=1
+encoding//src/main/java=UTF-8
+encoding//src/main/java/com/dh/DpsdkCore/DPSDK_UserInfo_t.java=UTF-8
+encoding//src/main/java/com/dh/DpsdkCore/Get_RealStreamUrl_Info_t.java=UTF-8
+encoding//src/main/java/com/dh/DpsdkCore/Get_RealStream_Info_t.java=UTF-8
+encoding//src/main/java/com/dh/DpsdkCore/Get_RecordStream_Time_Info_t.java=UTF-8
+encoding//src/main/java/com/dh/DpsdkCore/TrialFormAttrName_t.java=UTF-8
+encoding//src/main/java/com/dh/DpsdkCore/Video_Color_Info_t.java=UTF-8
+encoding//src/main/java/com/dh/DpsdkCore/dpsdk_retval_e.java=UTF-8
+encoding//src/main/java/com/dh/DpsdkCore/fDPSDKDeviceChangeCallback.java=UTF-8
+encoding//src/main/java/com/dh/DpsdkCore/fDPSDKStatusCallback.java=UTF-8
+encoding//src/main/java/com/dh/DpsdkCore/fDPSDKTalkParamCallback.java=UTF-8
+encoding//src/main/resources=UTF-8
+encoding//src/test/java=UTF-8
+encoding//src/test/resources=UTF-8
+encoding/<project>=UTF-8
