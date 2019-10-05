@@ -13,6 +13,7 @@ import java.util.Arrays;
 import java.util.Date;
 
 import com.dejiacheng.common.exception.dahua.DahuaException;
+import com.dejiacheng.common.utils.StringUtils;
 import com.dh.DpsdkCore.*;
 import com.dh.DpsdkCore.TvWall.Set_TvWall_Screen_Window_Source_t;
 import com.dh.DpsdkCore.TvWall.TvWall_Layout_Info_t;
@@ -1368,6 +1369,76 @@ public class TestDPSDKMain
 		menu.Run();
 	}
 	
+	
+	/**
+	 * 获取通道信息
+	 */
+//	ssssssssssss
+	//TODO
+	public int GetChannelInfo() {
+		String strCoding="001";
+		int nRet = -1;
+		Get_Dep_Count_Info_t depCountInfo = new Get_Dep_Count_Info_t();
+		depCountInfo.szCoding=strCoding.getBytes();
+		nRet = IDpsdkCore.DPSDK_GetDGroupCount(m_nDLLHandle,depCountInfo);
+		System.out.println("通道号个数："+depCountInfo.nChannelCount);
+		
+		//获取组织下子组织和子设备的信息
+		Get_Dep_Info_t depInfo = new Get_Dep_Info_t(depCountInfo.nDepCount,depCountInfo.nDeviceCount);
+		depInfo.szCoding = strCoding.getBytes();
+		nRet = IDpsdkCore.DPSDK_GetDGroupInfo(m_nDLLHandle,depInfo);
+		
+		Get_Channel_Info_Ex_t channelInfo = new Get_Channel_Info_Ex_t(depCountInfo.nChannelCount);
+		channelInfo.szDeviceId = depInfo.pDeviceInfo[0].szId;
+		IDpsdkCore.DPSDK_GetChannelInfoEx(m_nDLLHandle,channelInfo);
+		if(nRet == dpsdk_retval_e.DPSDK_RET_SUCCESS) {
+			int i = 0;
+			while(channelInfo.pEncChannelnfo[i].szId[0] != 0) {
+				String channelNameBuf = "";
+				String channelIDBuf = "";
+				try {
+					channelNameBuf = new String(channelInfo.pEncChannelnfo[i].szName, "UTF-8");
+					channelIDBuf = new String(channelInfo.pEncChannelnfo[i].szId, "UTF-8");
+				} catch (IOException e) {  
+					e.printStackTrace();  
+				} 
+				System.out.println("通道名称信息："+channelNameBuf+"------------");
+				System.out.println("通道ID:"+channelIDBuf);
+				System.out.println("摄像头类型"+channelInfo.pEncChannelnfo[i].nCameraType);
+				i++;
+			}
+		}
+		
+		return nRet;
+	}
+	
+	//获取设备信息列表
+	public void getDeviceInfo() {
+		String strCoding="001";
+		int nRet = -1;
+		int i = 0;
+		Get_Dep_Count_Info_t depCountInfo = new Get_Dep_Count_Info_t();
+		depCountInfo.szCoding=strCoding.getBytes();
+		nRet = IDpsdkCore.DPSDK_GetDGroupCount(m_nDLLHandle,depCountInfo);
+		System.out.println("通道号个数："+depCountInfo.nChannelCount);
+		//获取组织下子组织和子设备的信息
+		Get_Dep_Info_t depInfo = new Get_Dep_Info_t(depCountInfo.nDepCount,depCountInfo.nDeviceCount);
+		depInfo.szCoding = strCoding.getBytes();
+		nRet = IDpsdkCore.DPSDK_GetDGroupInfo(m_nDLLHandle,depInfo);
+		Device_Info_Ex_t deviceInfo = new Device_Info_Ex_t();
+		while(i < depCountInfo.nDeviceCount) {
+			IDpsdkCore.DPSDK_GetDeviceInfoExById(m_nDLLHandle,depInfo.pDeviceInfo[i].szId,deviceInfo);
+			String devicebuf = "";
+			try {
+				devicebuf = new String(deviceInfo.szName, "UTF-8");
+			} catch (IOException e) {  
+				e.printStackTrace();  
+			} 
+			System.out.println("设备名称："+devicebuf+"------------");
+			i++;
+		}
+	}
+	
 	public static void main(String[] args) 
 	{
 		TestDPSDKMain app=new TestDPSDKMain();
@@ -1419,8 +1490,12 @@ public class TestDPSDKMain
 		}*/
 		
 		app.LoadAllGroup();//加载组织结构
+//		app.LoadGroup();
 		
 		app.GetGroupStr();//获取组织结构串
+		
+//		app.GetChannelInfo();
+		app.getDeviceInfo();
 		
 		//app.GetUserOrgInfo();//获取用户组织信息
 		
@@ -1498,9 +1573,9 @@ public class TestDPSDKMain
 		//app.OnGetTvWallList();//获取电视墙列表
 		//app.MapTaskToTvWall(28);//电视墙任务上墙
 		app.GetExternUrl();//获取视频URL
-		String   m_strRealCamareID = "1000078$1$0$21";    //实时通道ID
-		app.OnYuntaiStart(m_strRealCamareID, 3, 1);
-		app.OnYuntaiStop(m_strRealCamareID, 3, 1);
+//		String   m_strRealCamareID = "1000078$1$0$21";    //实时通道ID
+//		app.OnYuntaiStart(m_strRealCamareID, 3, 1);
+//		app.OnYuntaiStop(m_strRealCamareID, 3, 1);
 //		app.OnYuntaiEnd();
 		//门禁功能接口 begin
 		//app.OnGetLinkResource();//获取门禁绑定的视频源信息

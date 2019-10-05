@@ -207,6 +207,7 @@ public class IDpsdkCore
 	*/
 	static public native  int DPSDK_SetCompressType( int nPDLLHandle, int nCompressType);
 	
+	
 	/** 加载组织设备信息.
 	 @param   IN	nPDLLHandle		SDK句柄
 	 @param   OUT	nGroupLen       组织结构信息长度
@@ -319,7 +320,7 @@ public class IDpsdkCore
 	 @remark
 	 */
 	static public native  int DPSDK_GetChnlType( int nPDLLHandle, byte szCameraId[], Return_Value_Info_t nUnitType);	
-
+	
 	/** 根据CemeraId获取通道信息
 	@param   IN    nPDLLHandle     SDK句柄
 	@param   IN    szCameraId      通道ID

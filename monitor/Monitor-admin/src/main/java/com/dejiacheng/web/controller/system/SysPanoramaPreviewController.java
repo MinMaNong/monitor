@@ -44,19 +44,9 @@ public class SysPanoramaPreviewController extends BaseController{
 	}
 	
 	@PostMapping("/panoramaPreview/list")
-//    @RequiresPermissions("panoramaPreview:list")
     @ResponseBody
     public AjaxResult panoramaList(SysChannelInfo sysChannelInfo) {
 		return AjaxResult.success(channelInfoService.selectSysChannelInfoList(sysChannelInfo));
 	}
 	
-	@GetMapping("/alert_admin")
-	public String alertAdmin() {
-		return "alert_admin";
-	}
-	
-	@GetMapping("/tongji")
-	public String tongji() {
-		return "tongji";
-	}
 }

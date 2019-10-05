@@ -2,6 +2,7 @@ package com.dejiacheng.system.domain;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
+
 import com.dejiacheng.common.annotation.Excel;
 import com.dejiacheng.common.core.domain.BaseEntity;
 

@@ -164,6 +164,13 @@
 			<version>${fastjson.version}</version>
 		 </dependency>
 		 
+		 <!-- 通用工具-->
+         <dependency>
+            <groupId>com.dejiacheng</groupId>
+            <artifactId>Monitor-common</artifactId>
+            <version>${Monitor.vesion}</version>
+         </dependency>
+		 
 		 <!-- 核心模块-->
 		 <dependency>
 			<groupId>com.dejiacheng</groupId>
@@ -178,12 +185,6 @@
 			<version>${Monitor.vesion}</version>
 		 </dependency>
 		 
-		 <!-- 通用工具-->
-         <dependency>
-            <groupId>com.dejiacheng</groupId>
-            <artifactId>Monitor-common</artifactId>
-            <version>${Monitor.vesion}</version>
-         </dependency>
          
   	</dependencies>
   </dependencyManagement>

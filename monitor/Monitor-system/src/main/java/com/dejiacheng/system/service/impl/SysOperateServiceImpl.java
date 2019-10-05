@@ -4,9 +4,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.dejiacheng.common.utils.dahua.DahuaApp;
+import com.dejiacheng.system.domain.SysChannelInfo;
+import com.dejiacheng.system.domain.SysDeviceInfo;
 import com.dejiacheng.system.domain.SysServiceInfo;
+import com.dejiacheng.system.service.ISysChannelInfoService;
 import com.dejiacheng.system.service.ISysOperateService;
 import com.dejiacheng.system.service.ISysServiceInfoService;
+import com.dh.DpsdkCore.Enc_Channel_Info_Ex_t;
 
 
 /**
@@ -22,6 +26,9 @@ public class SysOperateServiceImpl implements ISysOperateService{
 	
 	@Autowired 
 	private ISysServiceInfoService serviceInfoServiceImpl;
+	
+	@Autowired
+	private ISysChannelInfoService channelinfoServiceImpl;
 
 	/**
 	 * 初始化大华平台*/
@@ -51,7 +58,9 @@ public class SysOperateServiceImpl implements ISysOperateService{
 		// TODO Auto-generated method stub
 		return dahuaApp.LoadAllGroup();
 	}
-
+	
+	
+	
 	/**
 	 * 获取HLS拉流方式视频
 	 * @param m_strRealCamareID 视频通道
@@ -85,6 +94,18 @@ public class SysOperateServiceImpl implements ISysOperateService{
 	public int OnYuntaiStop(String m_strRealCamareID, int nDirect, int nStep) {
 		// TODO Auto-generated method stub
 		return dahuaApp.OnYuntaiStop(m_strRealCamareID, nDirect, nStep);
+	}
+
+	
+	@Override
+	public void updateInfo() {
+		// TODO Auto-generated method stub
+		Enc_Channel_Info_Ex_t[]  channels = dahuaApp.updateInfo();
+//		SysChannelInfo channelinfo = new SysChannelInfo();
+//		for (Enc_Channel_Info_Ex_t enc_Channel_Info_Ex_t : channels) {
+//			channelinfo.setChannelcode(channels[0].nCameraType);
+//			channelinfoServiceImpl.updateSysChannelInfo(channelinfo);
+//		}
 	}
 
 }

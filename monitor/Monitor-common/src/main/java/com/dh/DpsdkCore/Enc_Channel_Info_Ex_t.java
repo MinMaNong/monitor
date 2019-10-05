@@ -1,5 +1,7 @@
 ﻿package com.dh.DpsdkCore;
 
+import java.util.Arrays;
+
 /** 编码通道信息
 @param   nCameraType		类型，参见CameraType_e
 @param   szId				通道ID:设备ID+通道号	

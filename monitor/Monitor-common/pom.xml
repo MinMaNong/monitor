@@ -9,7 +9,7 @@
   <description>common通用工具</description>
   
   <dependencies>
-  	
+  
   	<!-- Spring框架基本的核心工具 -->
 	<dependency>
 		<groupId>org.springframework</groupId>
@@ -94,4 +94,5 @@
     	<artifactId>javax.servlet-api</artifactId>
 	</dependency>
   </dependencies>
+  
 </project>

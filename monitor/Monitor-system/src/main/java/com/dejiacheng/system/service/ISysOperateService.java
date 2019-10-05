@@ -1,5 +1,6 @@
 package com.dejiacheng.system.service;
 
+import com.dejiacheng.system.domain.SysDeviceInfo;
 
 /**
  * @author pcy
@@ -21,6 +22,11 @@ public interface ISysOperateService {
 	public int LoadAllGroup();
 	
 	/**
+	 * 更新数据库信息
+	 */
+	public void updateInfo();
+	
+	/**
 	 * 获取视频URL*/
 	public String GetExternUrlHLS(String m_strRealCamareID);
 	
@@ -32,7 +38,7 @@ public interface ISysOperateService {
 	/**
 	 * 云台控制结束*/
 	public int OnYuntaiStop(String m_strRealCamareID,int nDirect,int nStep);
-	
+
 	/**
 	 * 录像计划*/
 	

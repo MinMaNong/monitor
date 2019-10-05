@@ -79,6 +79,18 @@ public class SysOperateController extends BaseController{
 //		}
 	}
 	
+	/**
+	 * 更新数据库信息
+	 */
+	@GetMapping("/updateInfo")
+	public void updateInfo() {
+		operateService.updateInfo();
+	}
+	
+	
+	/**
+	 * 获取HLS方式地址列表
+	 */
 	@Log(title = "获取视频地址", businessType = BusinessType.GETURL)
 	@PostMapping("/getexterurlHLS")
 	@ResponseBody
@@ -87,10 +99,13 @@ public class SysOperateController extends BaseController{
 	}
 	
 	
+	/**
+	 * 云台操作
+	 */
 	@Log(title = "云台操作", businessType = BusinessType.YUNTAI)
 	@PostMapping("/yuntai")
 	@ResponseBody
-	public AjaxResult yuntaiSatrt(@RequestBody Map<String, String> mapp) {
+	public AjaxResult yuntai(@RequestBody Map<String, String> mapp) {
 		try {
 			int nRet = -1;
 			if(StringUtils.isEmpty(mapp)) {
