@@ -12,7 +12,7 @@ import com.dejiacheng.common.core.text.Convert;
  * 系统设备通道信息Service业务层处理
  * 
  * @author yukai
- * @date 2019-09-24
+ * @date 2019-10-06
  */
 @Service
 public class SysChannelInfoServiceImpl implements ISysChannelInfoService 

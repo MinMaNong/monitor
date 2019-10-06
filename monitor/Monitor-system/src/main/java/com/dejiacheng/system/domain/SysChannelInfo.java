@@ -2,16 +2,22 @@ package com.dejiacheng.system.domain;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
-
 import com.dejiacheng.common.annotation.Excel;
 import com.dejiacheng.common.core.domain.BaseEntity;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.NoArgsConstructor;
 
 /**
  * 系统设备通道信息对象 sys_channel_info
  * 
  * @author yukai
- * @date 2019-09-24
+ * @date 2019-10-06
  */
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class SysChannelInfo extends BaseEntity
 {
     private static final long serialVersionUID = 1L;
@@ -19,9 +25,9 @@ public class SysChannelInfo extends BaseEntity
     /** 通道ID */
     private Long channelId;
 
-    /** 设备ID */
-    @Excel(name = "设备ID")
-    private Long deviceId;
+    /** 摄像头类型 */
+    @Excel(name = "摄像头类型")
+    private Integer ncameratype;
 
     /** 通道编码 */
     @Excel(name = "通道编码")
@@ -30,6 +36,10 @@ public class SysChannelInfo extends BaseEntity
     /** 通道名称 */
     @Excel(name = "通道名称")
     private String channelname;
+
+    /** 通道类型 */
+    @Excel(name = "通道类型")
+    private Integer nchnltype;
 
     /** 通道状态 */
     @Excel(name = "通道状态")
@@ -44,14 +54,14 @@ public class SysChannelInfo extends BaseEntity
     {
         return channelId;
     }
-    public void setDeviceId(Long deviceId) 
+    public void setNcameratype(Integer ncameratype) 
     {
-        this.deviceId = deviceId;
+        this.ncameratype = ncameratype;
     }
 
-    public Long getDeviceId() 
+    public Integer getNcameratype() 
     {
-        return deviceId;
+        return ncameratype;
     }
     public void setChannelcode(String channelcode) 
     {
@@ -71,6 +81,15 @@ public class SysChannelInfo extends BaseEntity
     {
         return channelname;
     }
+    public void setNchnltype(Integer nchnltype) 
+    {
+        this.nchnltype = nchnltype;
+    }
+
+    public Integer getNchnltype() 
+    {
+        return nchnltype;
+    }
     public void setStatus(Integer status) 
     {
         this.status = status;
@@ -85,9 +104,10 @@ public class SysChannelInfo extends BaseEntity
     public String toString() {
         return new ToStringBuilder(this,ToStringStyle.MULTI_LINE_STYLE)
             .append("channelId", getChannelId())
-            .append("deviceId", getDeviceId())
+            .append("ncameratype", getNcameratype())
             .append("channelcode", getChannelcode())
             .append("channelname", getChannelname())
+            .append("nchnltype", getNchnltype())
             .append("status", getStatus())
             .toString();
     }

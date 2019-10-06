@@ -23,7 +23,7 @@ import com.dejiacheng.common.core.page.TableDataInfo;
  * 系统设备通道信息Controller
  * 
  * @author yukai
- * @date 2019-09-24
+ * @date 2019-10-06
  */
 @Controller
 @RequestMapping("/system/channelinfo")

@@ -7,7 +7,7 @@ import java.util.List;
  * 系统设备通道信息Service接口
  * 
  * @author yukai
- * @date 2019-09-24
+ * @date 2019-10-06
  */
 public interface ISysChannelInfoService 
 {

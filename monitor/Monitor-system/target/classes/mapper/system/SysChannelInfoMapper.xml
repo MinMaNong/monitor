@@ -6,22 +6,24 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     
     <resultMap type="SysChannelInfo" id="SysChannelInfoResult">
         <result property="channelId"    column="channel_id"    />
-        <result property="deviceId"    column="device_id"    />
+        <result property="ncameratype"    column="nCameraType"    />
         <result property="channelcode"    column="channelCode"    />
         <result property="channelname"    column="channelName"    />
+        <result property="nchnltype"    column="nChnlType"    />
         <result property="status"    column="status"    />
     </resultMap>
 
     <sql id="selectSysChannelInfoVo">
-        select channel_id, device_id, channelCode, channelName, status from sys_channel_info
+        select channel_id, nCameraType, channelCode, channelName, nChnlType, status from sys_channel_info
     </sql>
 
     <select id="selectSysChannelInfoList" parameterType="SysChannelInfo" resultMap="SysChannelInfoResult">
         <include refid="selectSysChannelInfoVo"/>
         <where>  
-            <if test="deviceId != null "> and device_id = #{deviceId}</if>
-            <if test="channelcode != null  and channelcode != ''"> and channelCode like concat('%', #{channelcode}, '%')</if>
+            <if test="ncameratype != null "> and nCameraType like concat('%', #{ncameratype}, '%')</if>
+            <if test="channelcode != null  and channelcode != ''"> and channelCode = #{channelcode}</if>
             <if test="channelname != null  and channelname != ''"> and channelName like concat('%', #{channelname}, '%')</if>
+            <if test="nchnltype != null "> and nChnlType like concat('%', #{nchnltype}, '%')</if>
             <if test="status != null "> and status like concat('%', #{status}, '%')</if>
         </where>
     </select>
@@ -35,16 +37,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         insert into sys_channel_info
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="channelId != null ">channel_id,</if>
-            <if test="deviceId != null ">device_id,</if>
+            <if test="ncameratype != null ">nCameraType,</if>
             <if test="channelcode != null  and channelcode != ''">channelCode,</if>
             <if test="channelname != null  and channelname != ''">channelName,</if>
+            <if test="nchnltype != null ">nChnlType,</if>
             <if test="status != null ">status,</if>
          </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
             <if test="channelId != null ">#{channelId},</if>
-            <if test="deviceId != null ">#{deviceId},</if>
+            <if test="ncameratype != null ">#{ncameratype},</if>
             <if test="channelcode != null  and channelcode != ''">#{channelcode},</if>
             <if test="channelname != null  and channelname != ''">#{channelname},</if>
+            <if test="nchnltype != null ">#{nchnltype},</if>
             <if test="status != null ">#{status},</if>
          </trim>
     </insert>
@@ -52,12 +56,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     <update id="updateSysChannelInfo" parameterType="SysChannelInfo">
         update sys_channel_info
         <trim prefix="SET" suffixOverrides=",">
-            <if test="deviceId != null ">device_id = #{deviceId},</if>
+            <if test="ncameratype != null ">nCameraType = #{ncameratype},</if>
             <if test="channelcode != null  and channelcode != ''">channelCode = #{channelcode},</if>
             <if test="channelname != null  and channelname != ''">channelName = #{channelname},</if>
+            <if test="nchnltype != null ">nChnlType = #{nchnltype},</if>
             <if test="status != null ">status = #{status},</if>
         </trim>
-        where channel_id = #{channelId}
+        where channelcode = #{channelcode}
     </update>
 
     <delete id="deleteSysChannelInfoById" parameterType="Long">

@@ -27,6 +27,7 @@
   	<jsoup.version>1.11.3</jsoup.version>
   	<poi.version>3.17</poi.version>
   	<velocity.version>1.7</velocity.version>
+  	<lombok.version>1.18.8</lombok.version>
   </properties>
   
   <!-- 依赖声明 -->
