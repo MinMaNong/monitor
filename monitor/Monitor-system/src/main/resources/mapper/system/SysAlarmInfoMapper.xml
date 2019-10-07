@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dejiacheng.system.mapper.SysAlarmInfoMapper">
+    
+    <resultMap type="SysAlarmInfo" id="SysAlarmInfoResult">
+        <result property="alarmId"    column="alarm_id"    />
+        <result property="alarmPerson"    column="alarm_person"    />
+        <result property="alarmTime"    column="alarm_time"    />
+        <result property="alarmPlace"    column="alarm_place"    />
+        <result property="alarmType"    column="alarm_type"    />
+        <result property="solvePerson"    column="solve_person"    />
+        <result property="solveStatus"    column="solve_status"    />
+    </resultMap>
+
+    <sql id="selectSysAlarmInfoVo">
+        select alarm_id, alarm_person, alarm_time, alarm_place, alarm_type, solve_person, solve_status from sys_alarm_info
+    </sql>
+
+    <select id="selectSysAlarmInfoList" parameterType="SysAlarmInfo" resultMap="SysAlarmInfoResult">
+        <include refid="selectSysAlarmInfoVo"/>
+        <where>  
+            <if test="alarmPerson != null  and alarmPerson != ''"> and alarm_person like concat('%', #{alarmPerson}, '%')</if>
+            <if test="alarmTime != null "> and alarm_time = #{alarmTime}</if>
+            <if test="alarmPlace != null  and alarmPlace != ''"> and alarm_place like concat('%', #{alarmPlace}, '%')</if>
+            <if test="alarmType != null  and alarmType != ''"> and alarm_type like concat('%', #{alarmType}, '%')</if>
+            <if test="solvePerson != null  and solvePerson != ''"> and solve_person like concat('%', #{solvePerson}, '%')</if>
+            <if test="solveStatus != null  and solveStatus != ''"> and solve_status like concat('%', #{solveStatus}, '%')</if>
+        </where>
+    </select>
+    
+    <select id="selectSysAlarmInfoById" parameterType="Long" resultMap="SysAlarmInfoResult">
+        <include refid="selectSysAlarmInfoVo"/>
+        where alarm_id = #{alarmId}
+    </select>
+        
+    <insert id="insertSysAlarmInfo" parameterType="SysAlarmInfo" useGeneratedKeys="true" keyProperty="alarmId">
+        insert into sys_alarm_info
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="alarmPerson != null  and alarmPerson != ''">alarm_person,</if>
+            <if test="alarmTime != null ">alarm_time,</if>
+            <if test="alarmPlace != null  and alarmPlace != ''">alarm_place,</if>
+            <if test="alarmType != null  and alarmType != ''">alarm_type,</if>
+            <if test="solvePerson != null  and solvePerson != ''">solve_person,</if>
+            <if test="solveStatus != null  and solveStatus != ''">solve_status,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="alarmPerson != null  and alarmPerson != ''">#{alarmPerson},</if>
+            <if test="alarmTime != null ">#{alarmTime},</if>
+            <if test="alarmPlace != null  and alarmPlace != ''">#{alarmPlace},</if>
+            <if test="alarmType != null  and alarmType != ''">#{alarmType},</if>
+            <if test="solvePerson != null  and solvePerson != ''">#{solvePerson},</if>
+            <if test="solveStatus != null  and solveStatus != ''">#{solveStatus},</if>
+         </trim>
+    </insert>
+
+    <update id="updateSysAlarmInfo" parameterType="SysAlarmInfo">
+        update sys_alarm_info
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="alarmPerson != null  and alarmPerson != ''">alarm_person = #{alarmPerson},</if>
+            <if test="alarmTime != null ">alarm_time = #{alarmTime},</if>
+            <if test="alarmPlace != null  and alarmPlace != ''">alarm_place = #{alarmPlace},</if>
+            <if test="alarmType != null  and alarmType != ''">alarm_type = #{alarmType},</if>
+            <if test="solvePerson != null  and solvePerson != ''">solve_person = #{solvePerson},</if>
+            <if test="solveStatus != null  and solveStatus != ''">solve_status = #{solveStatus},</if>
+        </trim>
+        where alarm_id = #{alarmId}
+    </update>
+
+    <delete id="deleteSysAlarmInfoById" parameterType="Long">
+        delete from sys_alarm_info where alarm_id = #{alarmId}
+    </delete>
+
+    <delete id="deleteSysAlarmInfoByIds" parameterType="String">
+        delete from sys_alarm_info where alarm_id in 
+        <foreach item="alarmId" collection="array" open="(" separator="," close=")">
+            #{alarmId}
+        </foreach>
+    </delete>
+    
+</mapper>
