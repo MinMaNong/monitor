@@ -86,6 +86,7 @@ public class SysChannelInfoServiceImpl implements ISysChannelInfoService
      * @param channelId 系统设备通道信息ID
      * @return 结果
      */
+    @Override
     public int deleteSysChannelInfoById(Long channelId)
     {
         return sysChannelInfoMapper.deleteSysChannelInfoById(channelId);

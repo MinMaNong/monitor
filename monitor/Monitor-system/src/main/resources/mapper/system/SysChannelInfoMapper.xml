@@ -33,10 +33,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         where channel_id = #{channelId}
     </select>
         
-    <insert id="insertSysChannelInfo" parameterType="SysChannelInfo">
+    <insert id="insertSysChannelInfo" parameterType="SysChannelInfo" useGeneratedKeys="true" keyProperty="channelId">
         insert into sys_channel_info
         <trim prefix="(" suffix=")" suffixOverrides=",">
-            <if test="channelId != null ">channel_id,</if>
             <if test="ncameratype != null ">nCameraType,</if>
             <if test="channelcode != null  and channelcode != ''">channelCode,</if>
             <if test="channelname != null  and channelname != ''">channelName,</if>
@@ -44,7 +43,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="status != null ">status,</if>
          </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
-            <if test="channelId != null ">#{channelId},</if>
             <if test="ncameratype != null ">#{ncameratype},</if>
             <if test="channelcode != null  and channelcode != ''">#{channelcode},</if>
             <if test="channelname != null  and channelname != ''">#{channelname},</if>
@@ -62,7 +60,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="nchnltype != null ">nChnlType = #{nchnltype},</if>
             <if test="status != null ">status = #{status},</if>
         </trim>
-        where channelcode = #{channelcode}
+        where channel_id = #{channelId}
     </update>
 
     <delete id="deleteSysChannelInfoById" parameterType="Long">

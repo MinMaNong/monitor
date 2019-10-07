@@ -1,7 +1,5 @@
 package com.dejiacheng.system.service.impl;
 
-import java.io.UnsupportedEncodingException;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -103,23 +101,11 @@ public class SysOperateServiceImpl implements ISysOperateService{
 	public void updateInfo() {
 		// TODO Auto-generated method stub
 		Enc_Channel_Info_Ex_t[]  channels = dahuaApp.updateInfo();
-		SysChannelInfo channelinfo = new SysChannelInfo();
-		String channelNameBuf = ""; 
-		String channelIDBuf = "";
-		for (Enc_Channel_Info_Ex_t enc_Channel_Info_Ex_t : channels) {
-			try {
-				channelNameBuf = new String(enc_Channel_Info_Ex_t.szName, "UTF-8").replace(" ", "");
-				channelIDBuf = new String(enc_Channel_Info_Ex_t.szId, "UTF-8").replace(" ", "");
-				SysChannelInfo channelinfonew = channelinfo.builder().ncameratype(enc_Channel_Info_Ex_t.nCameraType)
-				.channelcode(channelIDBuf).channelname(channelNameBuf).nchnltype(enc_Channel_Info_Ex_t.nChnlType)
-				.status(enc_Channel_Info_Ex_t.nStatus).build();
-				channelinfoServiceImpl.insertSysChannelInfo(channelinfonew);
-			} catch (UnsupportedEncodingException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+//		SysChannelInfo channelinfo = new SysChannelInfo();
+//		for (Enc_Channel_Info_Ex_t enc_Channel_Info_Ex_t : channels) {
 //			channelinfo.setChannelcode(channels[0].nCameraType);
-		}
+//			channelinfoServiceImpl.updateSysChannelInfo(channelinfo);
+//		}
 	}
 
 }
