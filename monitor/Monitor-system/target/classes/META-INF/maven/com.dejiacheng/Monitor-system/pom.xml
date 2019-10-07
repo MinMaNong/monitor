@@ -9,7 +9,15 @@
   <description>system系统模块</description>
   
   <dependencies>
-    
+    	
+    	<!-- lombok -->
+		<dependency>
+		    <groupId>org.projectlombok</groupId>
+		    <artifactId>lombok</artifactId>
+		    <version>1.18.8</version>
+		    <scope>provided</scope>
+		</dependency>
+    	
     	<!-- Mysql驱动包 -->
         <dependency>
             <groupId>mysql</groupId>

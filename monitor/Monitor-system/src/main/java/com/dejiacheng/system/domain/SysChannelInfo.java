@@ -5,12 +5,19 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 import com.dejiacheng.common.annotation.Excel;
 import com.dejiacheng.common.core.domain.BaseEntity;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.NoArgsConstructor;
+
 /**
  * 系统设备通道信息对象 sys_channel_info
  * 
  * @author yukai
  * @date 2019-10-06
  */
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class SysChannelInfo extends BaseEntity
 {
     private static final long serialVersionUID = 1L;
