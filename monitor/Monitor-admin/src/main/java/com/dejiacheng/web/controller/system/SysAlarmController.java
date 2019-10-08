@@ -42,7 +42,6 @@ public class SysAlarmController extends BaseController{
 	 */
 	@GetMapping("/alert_admin")
 	public String alertAdmin() {
-		
 		return "alert_admin";
 	}
 	
@@ -55,7 +54,10 @@ public class SysAlarmController extends BaseController{
 		SysAlarmInfo sysAlarmInfo = new SysAlarmInfo();
 		return AjaxResult.success(sysAlarmInfoService.selectSysAlarmInfoList(sysAlarmInfo));
 	}
-
+	
+	/**
+	 * 获取报警详细信息
+	 */
 	
 	@ApiOperation("获取报警详细")
 	@ApiImplicitParam(name = "alarmId", value = "报警ID", required = true, dataType = "long", paramType = "path")
