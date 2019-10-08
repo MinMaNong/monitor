@@ -35,13 +35,13 @@ public class UDPServer {
          * 向客户端响应数据
          */
         // 1.定义客户端的地址、端口号、数据
-        InetAddress address = packet.getAddress();
-        int port = packet.getPort();
-        byte[] data2 = strTo16("0b 00 02 00 00 00 0f 41 01 00 5e").getBytes();
-        // 2.创建数据报，包含响应的数据信息
-        DatagramPacket packet2 = new DatagramPacket(data2, data2.length, address, port);
-        // 3.响应客户端
-        socket.send(packet2);
+//        InetAddress address = packet.getAddress();
+//        int port = packet.getPort();
+//        byte[] data2 = strTo16("0b 00 02 00 00 00 0f 41 01 00 5e").getBytes();
+//        // 2.创建数据报，包含响应的数据信息
+//        DatagramPacket packet2 = new DatagramPacket(data2, data2.length, address, port);
+//        // 3.响应客户端
+//        socket.send(packet2);
         // 4.关闭资源
 //        socket.close();
  

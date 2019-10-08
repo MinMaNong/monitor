@@ -73,10 +73,10 @@ public class ContinueRead extends Thread implements SerialPortEventListener { //
             // 判断端口类型是否为串口
             if (portId.getPortType() == CommPortIdentifier.PORT_SERIAL) {
                 // 判断如果COM4串口存在，就打开该串口
-                if (portId.getName().equals("COM1")) {
+                if (portId.getName().equals("COM2")) {
                     try {
                         // 打开串口名字为COM_4(名字任意),延迟为2毫秒
-                        serialPort = (SerialPort) portId.open("COM_4", 2000);
+                        serialPort = (SerialPort) portId.open("COM_2", 2000);
 
                     } catch (PortInUseException e) {
                         e.printStackTrace();
@@ -138,11 +138,11 @@ public class ContinueRead extends Thread implements SerialPortEventListener { //
     }
 
     public static void main(String[] args) {
-//        ContinueRead cRead = new ContinueRead();
-//        int i = cRead.startComPort();
-//        if (i == 1) {
-//            // 启动线程来处理收到的数据
-//            cRead.start();
+        ContinueRead cRead = new ContinueRead();
+        int i = cRead.startComPort();
+        if (i == 1) {
+            // 启动线程来处理收到的数据
+            cRead.start();
 //            try {
 //                String st = "哈哈----你好";
 //                System.out.println("发出字节数：" + st.getBytes("gbk").length);
@@ -152,9 +152,9 @@ public class ContinueRead extends Thread implements SerialPortEventListener { //
 //                // TODO Auto-generated catch block
 //                e.printStackTrace();
 //            }
-//        } else {
-//            return;
-//        }
+        } else {
+            return;
+        }
     	byte b = (byte)0x11;
     	System.out.println(b);
     }
