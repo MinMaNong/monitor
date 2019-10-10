@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <th:block th:include="include :: header('修改红外设备信息')" />
+</head>
+<body class="white-bg">
+    <div class="wrapper wrapper-content animated fadeInRight ibox-content">
+        <form class="form-horizontal m" id="form-infraredinfo-edit" th:object="${sysInfraredInfo}">
+            <input name="infraredId" th:field="*{infraredId}" type="hidden">
+            <div class="form-group">    
+                <label class="col-sm-3 control-label">父id：</label>
+                <div class="col-sm-8">
+                    <div class="input-group">
+                        <input id="treeId" name="parentsId" type="hidden" th:field="*{parentsId}" />
+                        <input class="form-control" type="text" onclick="selectInfraredinfoTree()" id="treeName" readonly="true" th:field="*{parentName}">
+                        <span class="input-group-addon"><i class="fa fa-search"></i></span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">    
+                <label class="col-sm-3 control-label">红外名称：</label>
+                <div class="col-sm-8">
+                    <input name="infraredName" th:field="*{infraredName}" class="form-control" type="text">
+                </div>
+            </div>
+            <div class="form-group">    
+                <label class="col-sm-3 control-label">显示顺序：</label>
+                <div class="col-sm-8">
+                    <input name="orderNum" th:field="*{orderNum}" class="form-control" type="text">
+                </div>
+            </div>
+            <div class="form-group">    
+                <label class="col-sm-3 control-label">通道id：</label>
+                <div class="col-sm-8">
+                    <input name="channelId" th:field="*{channelId}" class="form-control" type="text">
+                </div>
+            </div>
+            <div class="form-group">    
+                <label class="col-sm-3 control-label">状态：</label>
+                <div class="col-sm-8">
+                    <div class="radio-box" th:each="dict : ${@dict.getType('infrared_status')}">
+                        <input type="radio" th:id="${'infraredStatus_' + dict.dictCode}" name="infraredStatus" th:value="${dict.dictValue}" th:field="*{infraredStatus}">
+                        <label th:for="${'infraredStatus_' + dict.dictCode}" th:text="${dict.dictLabel}"></label>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <th:block th:include="include :: footer" />
+    <script type="text/javascript">
+        var prefix = ctx + "system/infraredinfo";
+        $("#form-infraredinfo-edit").validate({
+            focusCleanup: true
+        });
+
+        function submitHandler() {
+            if ($.validate.form()) {
+                $.operate.save(prefix + "/edit", $('#form-infraredinfo-edit').serialize());
+            }
+        }
+
+        /*红外设备信息-新增-选择父部门树*/
+        function selectInfraredinfoTree() {
+            var options = {
+                title: '红外设备信息选择',
+                width: "380",
+                url: prefix + "/selectInfraredinfoTree/" + $("#treeId").val(),
+                callBack: doSubmit
+            };
+            $.modal.openOptions(options);
+        }
+
+        function doSubmit(index, layero){
+            var body = layer.getChildFrame('body', index);
+               $("#treeId").val(body.find('#treeId').val());
+               $("#treeName").val(body.find('#treeName').val());
+               layer.close(index);
+        }
+    </script>
+</body>
+</html>
