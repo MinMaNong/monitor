@@ -23,11 +23,15 @@ import com.dejiacheng.system.domain.SysChannelInfo;
 import com.dejiacheng.system.domain.SysUser;
 import com.dejiacheng.system.service.ISysChannelInfoService;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+
 /**
  * @author pcy
  * 监控系统主界面
  * @version 创建时间:2019年9月28日-下午9:52:29
  */
+@Api("监控系统主界面")
 @Controller
 //@RequestMapping("/panoramaPreview")
 public class SysPanoramaPreviewController extends BaseController{
@@ -35,18 +39,25 @@ public class SysPanoramaPreviewController extends BaseController{
 	@Autowired
 	private ISysChannelInfoService channelInfoService;
 	
+	@ApiOperation("跳转监控系统主界面")
 	@GetMapping("/panoramaPreview")
-	public String panoramaPreview(ModelMap mmap) {
+	public String panoramaPreview() {
 		 // 取身份信息
+		ModelMap mmap = new ModelMap();
         SysUser user = ShiroUtils.getSysUser();
         mmap.put("user", user);
 		return "panoramaPreview";
 	}
 	
+	@ApiOperation("获取通道信息列表")
 	@PostMapping("/panoramaPreview/list")
     @ResponseBody
-    public AjaxResult panoramaList(SysChannelInfo sysChannelInfo) {
+    public AjaxResult panoramaList() {
+		SysChannelInfo sysChannelInfo = new SysChannelInfo();
 		return AjaxResult.success(channelInfoService.selectSysChannelInfoList(sysChannelInfo));
 	}
+	
+//	@ApiOperation("注销登录")
+	
 	
 }

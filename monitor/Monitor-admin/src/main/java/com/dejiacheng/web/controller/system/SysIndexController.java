@@ -13,6 +13,8 @@ import com.dejiacheng.system.domain.SysMenu;
 import com.dejiacheng.system.domain.SysUser;
 import com.dejiacheng.system.service.ISysMenuService;
 
+import io.swagger.annotations.ApiOperation;
+
 /**
  * @author pcy
  * 首页 业务处理
@@ -24,7 +26,9 @@ public class SysIndexController extends BaseController
     @Autowired
     private ISysMenuService menuService;
 
+    
     // 系统首页
+    @ApiOperation("跳转管理平台页面")
     @GetMapping("/index")
     public String index(ModelMap mmap)
     {

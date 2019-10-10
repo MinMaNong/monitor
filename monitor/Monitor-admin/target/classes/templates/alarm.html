@@ -5,6 +5,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+		<button onclick="shishi()">试试就试试</button>
 	<div>
 		<span>报警监听:</span>
 		<span id="baojing" ></span>
@@ -15,6 +16,7 @@
 	<div>
 		<span id="cuowu"></span>
 	</div>
+	<script src="../static/js/jquery.min.js" th:src="@{/js/jquery.min.js}"></script>
 </body>
 	<script>
 		var socket;
@@ -33,14 +35,13 @@
 				console.log("连接已经打开");
 			};
 			//获取消息事件
-			document.getElementById("").className = "blue";
 			socket.onmessage = function(msg){
 				if (msg.data=="true") {
 					document.getElementById("baojing").innerText = "测试正常---->总测试次数为："+i;
 					document.getElementById("zhengque").innerText = "正常次数为："+(++a);
 				} else {
 					document.getElementById("baojing").innerText = "测试错误"+"---->总测试次数为："+i;
-					document.getElementById("cuowu").innerText = "错误次数为："+(++b);
+					document.getElementById("cuowu").innerText = msg.data;
 				}
 				
 				console.log(msg.data+"测试次数:"+i);
@@ -56,6 +57,22 @@
 				alert("Socket发生了错误");
 			};
 		}
-
+	function shishi(){
+		$.ajax({
+		type:"post",
+		url:"/alarm/webcoket",
+		data:{
+			"cid":20
+		},
+		success:function(result){
+			if(result.code == 0){
+				console.log("成功");
+			}else{
+				console.log("失败");
+			}
+		}
+	})
+	}
+		
 	</script>
 </html>

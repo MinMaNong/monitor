@@ -238,11 +238,11 @@ html body {
 }
 .container .left div:hover {
   cursor: pointer;
-  background-image: url(../img/left-bg.png);
+  background-image: url(../../img/left-bg.png);
   background-repeat: repeat-x;
 }
 .container .left .active {
-  background-image: url(../img/left-bg.png);
+  background-image: url(../../img/left-bg.png);
   background-repeat: repeat-x;
 }
 .container .right {

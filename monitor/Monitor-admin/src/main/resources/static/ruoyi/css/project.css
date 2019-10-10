@@ -1085,32 +1085,32 @@ html body {
   margin-left: 17px;
 }
 .container .eject .ejectContent .content .make .content .control .control_suspend {
-  background-image: url(../img/icon-suspend.png);
+  background-image: url(../../img/icon-suspend.png);
   margin-left: 0px;
 }
 .container .eject .ejectContent .content .make .content .control .control_left {
-  background-image: url(../img/icon-left.png);
+  background-image: url(../../img/icon-left.png);
 }
 .container .eject .ejectContent .content .make .content .control .control_right {
-  background-image: url(../img/icon-right.png);
+  background-image: url(../../img/icon-right.png);
 }
 .container .eject .ejectContent .content .make .content .control .control_top {
-  background-image: url(../img/icon-top.png);
+  background-image: url(../../img/icon-top.png);
 }
 .container .eject .ejectContent .content .make .content .control .control_bottom {
-  background-image: url(../img/icon-bottom.png);
+  background-image: url(../../img/icon-bottom.png);
 }
 .container .eject .ejectContent .content .make .content .control .control_screenshots2 {
-  background-image: url(../img/icon-screenshots2.png);
+  background-image: url(../../img/icon-screenshots2.png);
 }
 .container .eject .ejectContent .content .make .content .control .control_screenshots {
-  background-image: url(../img/icon-screenshots.png);
+  background-image: url(../../img/icon-screenshots.png);
 }
 .container .eject .ejectContent .content .make .content .control .control_rotate {
-  background-image: url(../img/ico-rotate.png);
+  background-image: url(../../img/ico-rotate.png);
 }
 .container .eject .ejectContent .content .make .content .control .control_enlarge {
-  background-image: url(../img/icon-enlarge.png);
+  background-image: url(../../img/icon-enlarge.png);
 }
 .container .eject .ejectContent .content .make .content .startTime,
 .container .eject .ejectContent .content .make .content .endTime {
@@ -1154,7 +1154,7 @@ html body {
   margin-left: 30%;
   border-radius: 100%;
   background-color: #217ceb;
-  background-image: url(../img/start.png);
+  background-image: url(../../img/start.png);
   background-repeat: no-repeat;
   background-position: 60% center;
 }
@@ -1165,7 +1165,7 @@ html body {
   margin-right: 30%;
   border-radius: 100%;
   background-color: #217ceb;
-  background-image: url(../img/stop.png);
+  background-image: url(../../img/stop.png);
   background-repeat: no-repeat;
   background-position: center;
 }

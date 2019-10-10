@@ -7,8 +7,7 @@
 	    <meta http-equiv="Pragma" content="no-cache" />
 	    <meta http-equiv="Cache-Control" content="no-cache, must-revalidate" />
 	    <meta http-equiv="Expires" content="0" />
-	    <!-- <link rel="stylesheet" href="css/project.css" /> -->
-	     <link th:href="@{/css/animate.css}" rel="stylesheet"/>
+		<link th:href="@{/css/animate.css}" rel="stylesheet"/>
          <link th:href="@{/css/style.css}" rel="stylesheet"/>
          <link th:href="@{/css/skins.css}" rel="stylesheet"/>
 	     <link th:href="@{/css/jquery.contextMenu.min.css}" rel="stylesheet"/>
@@ -72,17 +71,17 @@
 			<!--左边切换卡-->
 			<div class="left" id="leftList">
 				<div class="qj active">
-					<a th:href="@{/panoramaPreview}">
+					<a th:href = @{/panoramaPreview}>
 						<img src="img/l-qj.png" />
 					</a>
 				</div>
 				<div class="sos">
-					<a th:href="@{/alert_admin}">
+					<a th:href = @{/alert_admin}>
 						<img src="img/l-sos2.png" />
 					</a>
 				</div>
 				<div class="tatistics">
-					<a th:href="@{/tongji}">
+					<a th:href = @{/tongji}>
 						<img src="img/l-tatistics2.png" />
 					</a>
 				</div>
@@ -324,22 +323,10 @@
 			</div>
 			<!--人员入侵和视频制作弹出层-结束-->
 		</div>
-		<script th:inline="javascript"> var ctx = [[@{/}]];  </script>
-		<!-- 全局js -->
-		<script src="../static/js/jquery.min.js" th:src="@{/js/jquery.min.js}"></script>
-		<script src="../static/js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>
-		<!-- 插件 -->
 		<script src="../static/js/jquery-1.7.1.min.js" th:src="@{/js/jquery-1.7.1.min.js}"></script>
 		<script src="../static/ruoyi/js/panoramaPreview.js" th:src="@{/ruoyi/js/panoramaPreview.js}"></script>
 		<script src="../static/ruoyi/js/hls.min.js" th:src="@{/ruoyi/js/hls.min.js}"></script>
 		<script src="../static/ruoyi/js/video.js" th:src="@{/ruoyi/js/video.js}"></script>
-		<script src="../static/ajax/libs/blockUI/jquery.blockUI.js" th:src="@{/ajax/libs/blockUI/jquery.blockUI.js}"></script>
-		<script src="../static/ajax/libs/layer/layer.min.js" th:src="@{/ajax/libs/layer/layer.min.js}"></script>
-        <script src="../static/ruoyi/js/ry-ui.js" th:src="@{/ruoyi/js/ry-ui.js?v=4.0.0}"></script>
-		<!--<script type="text/javascript" src="js/jquery-1.7.1.min.js" ></script>
-		<script type="text/javascript" src="js/panoramaPreview.js" ></script>
-		<script src="js/hls.min.js" type="text/javascript" charset="utf-8"></script>
-		<script src="js/video.js" type="text/javascript" charset="utf-8"></script>  -->
 		<script>
 			/********************************************获取高度和宽度***************************************************/
 			//js  兼容各浏览器，获取高度和宽度

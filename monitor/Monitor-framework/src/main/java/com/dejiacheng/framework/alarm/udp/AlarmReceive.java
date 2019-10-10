@@ -18,6 +18,7 @@ public class AlarmReceive implements Runnable {
 	
 	//定义一个套接字
 	private DatagramSocket getSocket;
+//	Thread sendThead = new Thread();
 //	private static int port = 8015;
 	
 	//定义一个有参的构造函数
@@ -50,6 +51,7 @@ public class AlarmReceive implements Runnable {
 				AlarmSend alarmSend = new AlarmSend(dsSend,getPacket.getData(),getPacket.getLength());
 				System.out.println(getPacket.getAddress());
 				Thread sendThead = new Thread(alarmSend);
+//				sendThead.
 				sendThead.start();
 			}
 		} catch (UnknownHostException e) {

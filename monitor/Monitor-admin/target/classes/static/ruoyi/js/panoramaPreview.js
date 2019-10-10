@@ -1,68 +1,6 @@
 /*
  js说明：该js用于panoramaPreview.html页面
  * */
-
-
-/********************************************大华平台初始化***************************************************/
-$(function(){
-//	$.modal.loading("正在加载大华平台，请稍后...");
-	var jiazai = layer.load(0, {
-		  shade: [0.1,'#fff'] //0.1透明度的白色背景)
-	});
-	
-	
-	$.ajax({
-		type:"post",
-		contentType:"application/json;charset=UTF-8",
-		url:ctx+"system/operate/initial",
-		success:function(result){
-//			$.modal.closeLoading();
-			layer.close(jiazai);
-			if(result.code == 0){
-				console.log("成功");
-			}else{
-//				$.modal.closeLoading();
-				$('.imgcode').click();
-				$(".code").val("");
-				$.modal.alertError(result.msg);
-			}
-		}
-	})
-	
-	
-	$.ajax({
-		type:"post",
-		contentType:"application/json;charset=UTF-8",
-		url:ctx+"panoramaPreview/list",
-		success:function(result){
-			var channelname = result.data[5].channelname;
-			var data = result.data[1].channelId;
-			for (i = 0; i < result.data.length; i++) { 
-			    if(result.data[i].status != 1){
-//			    	$(result.data[i].channelId)).attr("src", "s-whole2.png");
-			    	document.getElementById(result.data[i].channelId).src = "img/s-whole2.png";
-			    }
-			 }
-//			$.each(data,function(index,domEle){
-//				console.log(domEle);
-//			})
-//			data.forEach(function(element) {
-//			    console.log(element);
-//			});
-//			$.modal.closeLoading();
-//			layer.close(jiazai);
-//			if(result.code == 0){
-//				console.log("成功");
-//			}else{
-////				$.modal.closeLoading();
-//				$('.imgcode').click();
-//				$(".code").val("");
-//				$.modal.alertError(result.msg);
-//			}
-		}
-	})
-})
-
 /********************************************js获取本地时间***************************************************/
 //说明：先用一个定时器在进入页面的时候就获取本地时间，然后销毁定时器，在销毁之前调用另一个一秒执行一次的定时器
 var interval = setInterval(function(){
@@ -116,18 +54,18 @@ $("#leftList div").mouseleave(function(){
 	if (LIndex == 0 || LIndex == "0") {
 		if($(this).is(".active")){
 		}else{
-			$(this).children("a").children("img").attr("src","../../img/l-qj2.png");
+			$(this).children("a").children("img").attr("src","img/l-qj2.png");
 		}
 	} else if(LIndex == 1 || LIndex == "1"){
 		if($(this).is(".active")){
 		}else{
-			$(this).children("a").children("img").attr("src","../../img/l-sos2.png");
+			$(this).children("a").children("img").attr("src","img/l-sos2.png");
 		}
 	}
 	else if(LIndex == 2 || LIndex == "2"){
 		if($(this).is(".active")){
 		}else{
-			$(this).children("a").children("img").attr("src","../../img/l-tatistics2.png");
+			$(this).children("a").children("img").attr("src","img/l-tatistics2.png");
 		}
 	}
 });
@@ -140,7 +78,7 @@ $(".mold .mold_c").click(function(){//球机类型点击事件
 	//删除兄弟级的class，为当前添加class=“active”
 	$(this).siblings().removeClass("active");
 	$(this).addClass("active");
-	var arr =["../../img/s-whole2.png","../../img/s-whole.png","../../img/s-half2.png","../../img/s-half.png","../../img/s-qj2.png","../../img/s-qj.png","../../img/s-all2.png","../../img/s-all.png"];
+	var arr =["img/s-whole2.png","img/s-whole.png","img/s-half2.png","img/s-half.png","img/s-qj2.png","img/s-qj.png","img/s-all2.png","img/s-all.png"];
 	//把所有的图片还原成白色
 	for(var i=0; i <= 3 ; i++){
 		$(".mold .mold_c:eq(" + i +") img").attr("src",arr[i*2]);
@@ -214,11 +152,18 @@ $("#camera .camera_img").click(function(){
 //点击实时视频制作右半边的×关闭蒙层
 $(".ejectClose").click(function(){
 	$(".eject").css({"display":"none"});
+	$(".videoqh").css({"display":"none"});
 	clickNumber = 0;
 	clickNumbers(clickNumber);
 	console.log("切换不同的报警类型时需要设置为0："+clickNumber);
 });
 /********************************************点击摄像头显示蒙层-结束***************************************************/
+
+/*******************************两个摄像头显示-开始********************************/
+$("#camera .img37").click(function(){
+	$(".videoqh").css({"display":"block"});
+});
+/*******************************两个摄像头显示-结束********************************/
 
 /********************************************点击回放按钮显示实时视频制作模块***************************************************/
 /****点击回放按钮显示实时视频制作模块****/

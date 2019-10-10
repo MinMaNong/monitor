@@ -7,24 +7,12 @@
 		<meta http-equiv="Pragma" content="no-cache" />
 		<meta http-equiv="Cache-Control" content="no-cache, must-revalidate" />
 		<meta http-equiv="Expires" content="0" />
-		<!-- <link rel="stylesheet" type="text/css" href="css/time.css"/> -->
-		<!-- <link rel="stylesheet" href="css/alert_admin.css" /> -->
-		<!-- <link rel="stylesheet" type="text/css" href="css/tongji/base.css"/>
-		<link rel="stylesheet" type="text/css" href="css/tongji/childPage.css"/>
-		<link rel="stylesheet" type="text/css" href="layui/css/layui.css"/>
-		<link rel="stylesheet" type="text/css" href="css/tongji/zarek.css"/>
-		<link href="../static/ruoyi/css/project.css" th:href="@{/ruoyi/css/time.css}" rel="stylesheet"/> -->
-		<link th:href="@{/css/animate.css}" rel="stylesheet"/>
-        <link th:href="@{/css/style.css}" rel="stylesheet"/>
-        <link th:href="@{/css/skins.css}" rel="stylesheet"/>
-	    <link th:href="@{/css/jquery.contextMenu.min.css}" rel="stylesheet"/>
-		<link href="../static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" rel="stylesheet"/>
-		<link href="../static/ruoyi/css/alert_admin.css" th:href="@{/ruoyi/css/alert_admin.css}" rel="stylesheet"/>
-		<link href="../static/ruoyi/css/base.css" th:href="@{/ruoyi/css/base.css}" rel="stylesheet"/>
-		<link href="../static/ruoyi/css/childPage.css" th:href="@{/ruoyi/css/childPage.css}" rel="stylesheet"/>
-		<link href="../static/ruoyi/css/layui.css" th:href="@{/ruoyi/css/layui.css}" rel="stylesheet"/>
-		<link href="../static/ruoyi/css/zarek.css" th:href="@{/ruoyi/css/zarek.css}" rel="stylesheet"/>
-		<link href="../static/ruoyi/css/time.css" th:href="@{/ruoyi/css/time.css}" rel="stylesheet"/>
+		<link th:href="@{/ruoyi/css/time.css}" rel="stylesheet"/>
+		<link th:href="@{/ruoyi/css/alert_admin.css}" rel="stylesheet"/>
+		<link th:href="@{/ruoyi/css/tongji/base.css}" rel="stylesheet"/>
+		<link th:href="@{/ruoyi/css/tongji/childPage.css}" rel="stylesheet"/>
+		<link th:href="@{/ruoyi/css/tongji/layui.css}" rel="stylesheet"/>
+		<link th:href="@{/ruoyi/css/tongji/zarek.css}" rel="stylesheet"/>
 	</head>
 	<!--禁止选中 onselectstart="return false"-->
 	<body onselectstart="return false">
@@ -40,7 +28,7 @@
 						<ul>
 							<!--<li><a>个人信息</a></li>
 							<li><a href="#0">修改密码</a></li>-->
-							<li><a href="#0">注销</a></li>
+							<li><a th:href=@{logout}>注销</a></li>
 						</ul>
 					</li>
 					<li class="system_admin"><a href="#0">系统管理</a></li>
@@ -50,18 +38,18 @@
 			<!--头部-结束-->
 			<!--左边切换卡-->
 			<div class="left" id="leftList">
-				<div class="qj active">
-					<a th:href="@{/panoramaPreview}">
-						<img src="img/l-qj.png" />
+				<div class="qj">
+					<a th:href = @{/panoramaPreview}>
+						<img src="img/l-qj2.png" />
 					</a>
 				</div>
-				<div class="sos">
-					<a th:href="@{/alert_admin}">
-						<img src="img/l-sos2.png" />
+				<div class="sos active">
+					<a th:href = @{/alert_admin}>
+						<img src="img/l-sos.png" />
 					</a>
 				</div>
 				<div class="tatistics">
-					<a th:href="@{/tongji}">
+					<a th:href = @{/tongji}>
 						<img src="img/l-tatistics2.png" />
 					</a>
 				</div>
@@ -180,8 +168,8 @@
 			<textarea name="" id="in_enfor" rows="" cols="" style="display: none;">1</textarea>
 			<textarea name="" id="al_enfor" rows="" cols="" style="display: none;">2</textarea>
 		</div>
-		<script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
-		<script src="js/time.js" type="text/javascript" charset="utf-8"></script>
+		<script th:src="@{/js/jquery-1.7.1.min.js}"></script>
+		<script th:src="@{/ruoyi/js/time.js}"></script>
 		<script>
 			/********************************************获取高度和宽度***************************************************/
 			//js  兼容各浏览器，获取高度和宽度
@@ -281,30 +269,11 @@
 				format:'yyyy-mm-dd'
 			}); 
 		</script>
-		<script th:inline="javascript"> var ctx = [[@{/}]];  </script>
-		<!-- 全局js -->
-		<script src="../static/js/jquery.min.js" th:src="@{/js/jquery.min.js}"></script>
-		<script src="../static/js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>
-		
-		<script src="../static/js/tongji/echarts.js" th:src="@{/js/tongji/echarts.js}"></script>
-		<script src="../static/js/tongji/layui.js" th:src="@{/js/tongji/layui.js}"></script>
-		<script src="../static/js/tongji/showDataTable.js" th:src="@{/js/tongji/showDataTable.js}"></script>
-		<script src="../static/js/tongji/timeSlot.js" th:src="@{/js/tongji/timeSlot.js}"></script>
-		<script src="../static/js/tongji/loadAnmt.js" th:src="@{/js/tongji/loadAnmt.js}"></script>
-		<script src="../static/ajax/libs/blockUI/jquery.blockUI.js" th:src="@{/ajax/libs/blockUI/jquery.blockUI.js}"></script>
-		<script src="../static/ajax/libs/layer/layer.min.js" th:src="@{/ajax/libs/layer/layer.min.js}"></script>
-        <script src="../static/ruoyi/js/ry-ui.js" th:src="@{/ruoyi/js/ry-ui.js?v=4.0.0}"></script>
-        <script src="../static/js/jquery-1.7.1.min.js" th:src="@{/js/jquery-1.7.1.min.js}"></script>
-		
-		
-		
-		
-		<!-- <script src="js/tongji/echarts.js" type="text/javascript" charset="utf-8"></script>
-		<script src="layui/layui.js" type="text/javascript" charset="utf-8"></script>
-		<script src="js/tongji/showDataTable.js" type="text/javascript" charset="utf-8"></script>
-		<script src="js/tongji/timeSlot.js" type="text/javascript" charset="utf-8"></script>
-		<script src="js/tongji/loadAnmt.js" type="text/javascript" charset="utf-8"></script> -->
-		
+		<script th:src="@{/ruoyi/js/tongji/echarts.js}"></script>
+		<script th:src="@{/ruoyi/js/layui/layui.js}"></script>
+		<script th:src="@{/ruoyi/js/tongji/showDataTable.js}"></script>
+		<script th:src="@{/ruoyi/js/tongji/timeSlot.js}"></script>
+		<script th:src="@{/ruoyi/js/tongji/loadAnmt.js}"></script>
 		<script type="text/javascript">
 			//统计页面内方法
 			showDataTable.clsNameRB=['球机','半球机','全景','红外'];

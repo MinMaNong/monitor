@@ -17,7 +17,8 @@ import java.util.Date;
  * @date 2019-10-06
  */
 @ApiModel("报警信息实体")
-public class SysAlarmInfo extends BaseEntity
+//public class SysAlarmInfo extends BaseEntity
+public class SysAlarmInfo
 {
     private static final long serialVersionUID = 1L;
 
