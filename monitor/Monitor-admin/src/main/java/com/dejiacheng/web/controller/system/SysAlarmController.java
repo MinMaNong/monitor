@@ -46,7 +46,6 @@ public class SysAlarmController extends BaseController{
 	@ApiOperation("跳转报警页面")
 	@GetMapping("/alert_admin")
 	public String alertAdmin() {
-		
 		return "alert_admin";
 	}
 	
@@ -60,7 +59,10 @@ public class SysAlarmController extends BaseController{
 		SysAlarmInfo sysAlarmInfo = new SysAlarmInfo();
 		return AjaxResult.success(sysAlarmInfoService.selectSysAlarmInfoList(sysAlarmInfo));
 	}
-
+	
+	/**
+	 * 获取报警详细信息
+	 */
 	
 	/**
 	 * 

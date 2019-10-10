@@ -271,7 +271,7 @@ public class ShiroConfig
         filterChainDefinitionMap.put("/login", "anon,captchaValidate");
         // 系统权限列表
         // filterChainDefinitionMap.putAll(SpringUtils.getBean(IMenuService.class).selectPermsAll());
-
+        
         Map<String, Filter> filters = new LinkedHashMap<String, Filter>();
         filters.put("onlineSession", onlineSessionFilter());
         filters.put("syncOnlineSession", syncOnlineSessionFilter());

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dejiacheng.system.mapper.SysInfraredInfoMapper">
+    
+    <resultMap type="SysInfraredInfo" id="SysInfraredInfoResult">
+        <result property="infraredId"    column="infrared_id"    />
+        <result property="parentsId"    column="parents_id"    />
+        <result property="ancestors"    column="ancestors"    />
+        <result property="infraredName"    column="infrared_name"    />
+        <result property="orderNum"    column="order_num"    />
+        <result property="channelId"    column="channel_id"    />
+        <result property="infraredStatus"    column="infrared_status"    />
+        <result property="parentName" column="parent_name" />
+    </resultMap>
+
+    <sql id="selectSysInfraredInfoVo">
+        select infrared_id, parents_id, ancestors, infrared_name, order_num, channel_id, infrared_status from sys_infrared_info
+    </sql>
+
+    <select id="selectSysInfraredInfoList" parameterType="SysInfraredInfo" resultMap="SysInfraredInfoResult">
+        <include refid="selectSysInfraredInfoVo"/>
+        <where>  
+            <if test="parentsId != null "> and parents_id = #{parentsId}</if>
+            <if test="ancestors != null  and ancestors != ''"> and ancestors = #{ancestors}</if>
+            <if test="infraredName != null  and infraredName != ''"> and infrared_name like concat('%', #{infraredName}, '%')</if>
+            <if test="orderNum != null "> and order_num = #{orderNum}</if>
+            <if test="channelId != null "> and channel_id = #{channelId}</if>
+            <if test="infraredStatus != null "> and infrared_status = #{infraredStatus}</if>
+        </where>
+        order by parents_id
+    </select>
+    
+    <select id="selectSysInfraredInfoById" parameterType="Long" resultMap="SysInfraredInfoResult">
+        select t.infrared_id, t.parents_id, t.ancestors, t.infrared_name, t.order_num, t.channel_id, t.infrared_status, p.infrared_name as parent_name
+        from sys_infrared_info t
+        left join sys_infrared_info p on p.infrared_id = t.parents_id
+        where t.infrared_id = #{infraredId}
+    </select>
+        
+    <insert id="insertSysInfraredInfo" parameterType="SysInfraredInfo">
+        insert into sys_infrared_info
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="infraredId != null ">infrared_id,</if>
+            <if test="parentsId != null ">parents_id,</if>
+            <if test="ancestors != null  and ancestors != ''">ancestors,</if>
+            <if test="infraredName != null  and infraredName != ''">infrared_name,</if>
+            <if test="orderNum != null ">order_num,</if>
+            <if test="channelId != null ">channel_id,</if>
+            <if test="infraredStatus != null ">infrared_status,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="infraredId != null ">#{infraredId},</if>
+            <if test="parentsId != null ">#{parentsId},</if>
+            <if test="ancestors != null  and ancestors != ''">#{ancestors},</if>
+            <if test="infraredName != null  and infraredName != ''">#{infraredName},</if>
+            <if test="orderNum != null ">#{orderNum},</if>
+            <if test="channelId != null ">#{channelId},</if>
+            <if test="infraredStatus != null ">#{infraredStatus},</if>
+         </trim>
+    </insert>
+
+    <update id="updateSysInfraredInfo" parameterType="SysInfraredInfo">
+        update sys_infrared_info
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="parentsId != null ">parents_id = #{parentsId},</if>
+            <if test="ancestors != null  and ancestors != ''">ancestors = #{ancestors},</if>
+            <if test="infraredName != null  and infraredName != ''">infrared_name = #{infraredName},</if>
+            <if test="orderNum != null ">order_num = #{orderNum},</if>
+            <if test="channelId != null ">channel_id = #{channelId},</if>
+            <if test="infraredStatus != null ">infrared_status = #{infraredStatus},</if>
+        </trim>
+        where infrared_id = #{infraredId}
+    </update>
+
+    <delete id="deleteSysInfraredInfoById" parameterType="Long">
+        delete from sys_infrared_info where infrared_id = #{infraredId}
+    </delete>
+
+    <delete id="deleteSysInfraredInfoByIds" parameterType="String">
+        delete from sys_infrared_info where infrared_id in 
+        <foreach item="infraredId" collection="array" open="(" separator="," close=")">
+            #{infraredId}
+        </foreach>
+    </delete>
+    
+</mapper>

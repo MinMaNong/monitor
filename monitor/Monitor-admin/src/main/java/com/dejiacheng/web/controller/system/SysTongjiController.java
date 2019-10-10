@@ -8,6 +8,7 @@ import com.dejiacheng.common.core.domain.AjaxResult;
 import com.dejiacheng.system.domain.SysDeviceInfo;
 import com.dejiacheng.system.service.ISysDeviceInfoService;
 
+import io.swagger.annotations.Api;
 @Controller
 public class SysTongjiController {
 

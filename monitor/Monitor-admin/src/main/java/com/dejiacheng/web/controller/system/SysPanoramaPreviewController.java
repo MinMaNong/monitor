@@ -24,6 +24,7 @@ import com.dejiacheng.system.domain.SysUser;
 import com.dejiacheng.system.service.ISysChannelInfoService;
 
 import io.swagger.annotations.Api;
+<<<<<<< HEAD
 import io.swagger.annotations.ApiOperation;
 
 /**
